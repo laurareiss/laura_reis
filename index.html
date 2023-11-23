@@ -1,0 +1,401 @@
+<!--
+  - Utilizei o trabalho em grupo como base;
+  - Adicionado o menu hamburger e o background do menu;
+  - Ajustado a responsividade anterior para que o menu ficasse funcional;
+   - Adicionado estilo para a classe ".bx-menu" que define propriedades para um ícone de menu, inicialmente oculto.
+  - Adicionada a classe ".background-overlay" para criar um overlay de fundo para o menu mobile, inicialmente invisível.
+  - Estabelecida a responsividade para telas maiores que 768px, ocultando o overlay e ajustando alguns elementos visuais.
+  - Adicionadas regras de mídia para telas de até 1024px, ajustando o layout de diversos elementos.
+  - Definido comportamento do menu para telas menores que 1023px, incluindo a exibição do ícone de menu e a ocultação dos itens de navegação.
+  - Adicionados estilos para esconder ou ajustar o tamanho de alguns elementos em telas menores que 767px.
+   - Adicionado um ouvinte de eventos para aguardar o carregamento completo do DOM.
+  - Selecionados os elementos relevantes do DOM, como botão do menu móvel, barra de navegação, overlay de fundo, logotipo e itens de navegação.
+  - Implementada uma função de clique para o botão do menu móvel, alternando entre abrir e fechar o menu.
+  - A lógica inclui a adição/remoção de classes para animar o menu e o overlay, ajuste do layout e visibilidade de elementos.
+  - Adicionado um ouvinte de eventos para os itens de navegação, fechando o menu quando um item é clicado.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css" />
+    <title>Healthy</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar">
+          <div class="logo-nome">
+            <a href="./index.html">
+              <img class="logo" src="./assets/logo.svg" alt="" />
+            </a>
+            <a class="healthy" href="./index.html">healthy</a>
+          </div>
+
+          <div id="burgerMenu" class="bx bx-menu"></div>
+          <div class="background-overlay"></div>
+
+          <div>
+            <ul class="nav-itens">
+              <li><a class="nav-item active-item" href="./index.html">Home</a></li>
+              <li><a class="nav-item" href="./planos.html">Planos</a></li>
+              <li><a class="nav-item" href="./receitas.html">Receitas</a></li>
+              <li><a class="nav-item" href="./sobre.html">Sobre nós</a></li>
+              <li><a class="btn-login" href="./login.html">Login</a></li>
+              <li><a class="btn-register" href="./register.html">Registre-se</a></li>
+            </ul>
+          </div>
+          
+
+        </nav>
+      </header>
+      <main class="main">
+        <section class="home-page1">
+          <img
+            src="./assets/pessoa.svg"
+            alt="pessoas"
+            class="pessoas-homepage"
+          />
+          <div class="infos-homepage">
+            <h2 class="titulo-homepage">Transforme sua dieta hoje!</h2>
+            <div class="btns-homepage">
+              <button class="btn-saiba-mais">Saiba mais!</button>
+              <button class="btn-experimente">
+                <img
+                  src="./assets/experimente-btn.svg"
+                  alt="experimente-btn"
+                  class="btn-experimente-img"
+                />
+                <span class="experimente-btn-title">Experimente agora!</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="fim-homepage">
+          <img class="fim-homepage-img" src="./assets/seta.svg" alt="" />
+        </div>
+
+        <section class="home-page2" id="aboutUs">
+          <div class="border">
+            <div class="àbout-us">
+              <h1 class="about-us-title">Sobre nós!</h1>
+              <p class="about-us-info">
+                A Healthy representa uma plataforma desenvolvida por
+                nutricionistas, com foco em atender às necessidades de
+                nutricionistas e estudantes de nutrição. Sua concepção visa a
+                disponibilização de todas as ferramentas essenciais para o
+                acompanhamento nutricional, simplificando o processo de forma
+                notável. Em outras palavras, não há mais necessidade de levar
+                trabalho para casa, resultando em economia de tempo e, por
+                conseguinte, a capacidade de atender um maior número de
+                pacientes em menos tempo, sem compromete a qualidade. Além
+                disso, seus pacientes podem acessar todas as prescrições que
+                você elaborou diretamente em nosso aplicativo, de forma
+                totalmente gratuita!
+              </p>
+
+              <button class="btn-saiba-mais">Saiba mais!</button>
+            </div>
+
+            <img src="./assets/frutas.svg" class="frutas" alt="" />
+          </div>
+        </section>
+
+        <section class="home-page3" id="dados">
+          <h1 class="home-page3-title">
+            Obtenha uma plataforma completa, desenvolvida por quem sabe o que
+            você precisa no seu cotidiano.
+          </h1>
+
+          <div class="home-page3-infos">
+            <div class="info-items">
+              <img class="home-page-icons" src="./assets/relogio.svg" alt="" />
+              <p class="home-page-bigP">- 10 minutos</p>
+              <p class="home-page-lowP">de planejamento alimentar</p>
+            </div>
+
+            <div class="info-items">
+              <img
+                class="home-page-icons"
+                src="./assets/alimentos.svg"
+                alt=""
+              />
+              <p class="home-page-bigP">+ 20 mil</p>
+              <p class="home-page-lowP">alimentos cadastrados com nutrientes</p>
+            </div>
+
+            <div class="info-items">
+              <img
+                class="home-page-icons pessoas-icon"
+                src="./assets/pessoas.svg"
+                alt=""
+              />
+              <p class="home-page-bigP">+ 68%</p>
+              <p class="home-page-lowP">
+                de aumento na fidelização de pacientes
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-page4" id="funcionalidades">
+          <div class="border border-page4">
+            <h1 class="home-page4-title">Funcionalidades</h1>
+            <p class="home-page4-infos">
+              Criar ferramentas avançadas para potencializar a produtividade da
+              sua clínica ou consultório. Com funcionalidades claras e fáceis de
+              usar, além de tecnologias de ponta que garantem a segurança total
+              dos seus dados.
+            </p>
+
+            <div class="grid-container">
+              <div class="grid-item">
+                <img
+                  class="cenoura"
+                  src="./assets/cenoura.svg"
+                  alt="cenoura"
+                />
+                <h1>Plano alimentar</h1>
+                <p>
+                  Um plano alimentar personalizado para cada paciente.
+                </p>
+              </div>
+
+              <div class="grid-item">
+                <img
+                  class="talheres"
+                  src="./assets/talheres.svg"
+                  alt="talheres"
+                />
+                <h1>Tabela nutricional</h1>
+                <p>
+                  Informações nutricionais de cada alimento ou ingrediente.
+                </p>
+              </div>
+
+              <div class="grid-item">
+                <img class="maça" src="./assets/maça.svg" alt="maça" />
+                <h1>Página de receita</h1>
+                <p>
+                  Uma lista de receitas completa e personalizada.
+                </p>
+              </div>
+
+              <div class="grid-item">
+                <img class="todo" src="./assets/todo.svg" alt="todo" />
+                <h1>Lista de compras</h1>
+                <p>
+                  Uma opção para que os pacientes criem uma lista de compras
+                  para os itens necessários para preparar as receitas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-page5" id="depoimentos">
+          <h1 class="home-page5-title">
+            Veja o que dizem sobre o Healthy
+          </h1>
+
+          <p class="home-page5-p">Opinião dos nutricionistas que economizam tempo em suas práticas diárias ao utilizar a plataforma de gestão nutricional</p>
+
+          <div class="depoimentos">
+            <div class="depoimento">
+              <img src="./assets/nutricionista1.png" alt="">
+              <h3>Dra. Mariana Silva:</h3>
+              <p>"No meu cotidiano, a plataforma Healthy tem proporcionado praticidade, rapidez e eficácia. Ela disponibiliza soluções inovadoras e ferramentas que simplificam o envolvimento com os pacientes."</p>
+            </div>
+
+            <div class="depoimento">
+              <img src="./assets/nutricionista2.png" alt="">
+              <h3>Dra. Ana Santos:</h3>
+              <p>"Graças à Healthy, consegui reduzir quase pela metade o tempo necessário para elaborar o plano alimentar do meu paciente. Recomendo enfaticamente a todos os profissionais e estudantes."</p>
+            </div>
+
+            <div class="depoimento">
+              <img src="./assets/nutricionista3.jpg" alt="">
+              <h3>Dra. Carolina Alves:</h3>
+              <p>"Como docente, a Healthy é uma valiosa ajuda para mim, tornando simples a avaliação do consumo de alimentos através do acesso a múltiplas tabelas de composição. É uma ferramenta perfeita para nutricionistas."</p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="home-page6" id="planos">
+          <div class="border border-page4">
+            <h1 class="home-page4-title">Conheça nossos planos</h1>
+
+            <div class="price-table">
+              <div class="table-plan">
+                <div class="table-header">
+                  <h1>Estudante</h1>
+                </div>
+
+                <div class="table-infos">
+                  <hr>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Acesso a todas as ferramentas essenciais</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Armazenamento de até 50 pacientes</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/x.svg" alt="">
+                    <li class="table-info">Suporte prioritário por e-mail. &ThinSpace;</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/x.svg" alt="">
+                    <li class="table-info">Relatórios de acompanhamento nutricional básicos.</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/x.svg" alt="">
+                    <li class="table-info">Integração com sistemas de gestão de consultório</li>
+                  </ul>
+
+                  <hr>
+                </div>
+
+                <div class="prices">
+                  <span class="price">R$ 19.99</span>
+                  <span class="month">/mês</span>
+                </div>
+              </div>
+
+              <div class="table-plan">
+                <div class="table-header">
+                  <h1>Básico</h1>
+                </div>
+
+                <div class="table-infos">
+                  <hr>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Acesso a todas as ferramentas essenciais</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Armazenamento de até 100 pacientes</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Suporte prioritário por e-mail. &ThinSpace;</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Relatórios de acompanhamento nutricional básicos.</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/x.svg" alt="">
+                    <li class="table-info">Integração com sistemas de gestão de consultório</li>
+                  </ul>
+                  
+                  <hr>
+                </div>
+                <div class="prices">
+                  <span class="price">R$ 49.99</span>
+                  <span class="month">/mês</span>
+                </div>
+              </div>
+
+              <div class="table-plan">
+                <div class="table-header">
+                  <h1>Premium</h1>
+                </div>
+                <div class="table-infos">
+                  <hr>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Acesso a todas as ferramentas essenciais</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Armazenamento ilimitado de pacientes</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Suporte prioritário por e-mail e chat.</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Relatórios de acompanhamento nutricional avançados.</li>
+                  </ul>
+
+                  <ul class="table-list">
+                    <img src="./assets/check.svg" alt="">
+                    <li class="table-info">Integração com sistemas de gestão de consultório</li>
+                  </ul>
+
+                  <hr>
+                </div>
+
+                <div class="prices">
+                  <span class="price">R$ 99.99</span>
+                  <span class="month">/mês</span>
+                </div>
+              </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="logo-nome">
+        <img class="logo-footer" src="./assets/logo_white.svg" alt="" />
+        <a class="healthy-footer" href="./index.html">healthy</a>
+      </div>
+      <div class="footer-list">
+        <ul class="ul-footer">
+          <h3>HOME</h3>
+          <li><a href="#aboutUs">Sobre nós</a></li>
+          <li><a href="#dados">Dados</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#planos">Planos</a></li>
+      </ul>
+
+      <ul class="ul-footer">
+        <h3>APLICATIVO</h3>
+        <li><a href="#">O que esperar</a></li>
+        <li><a href="#">Vantagens</a></li>
+      </ul>
+
+      <ul class="ul-footer">
+        <h3>PLANOS E PREÇOS</h3>
+        <li><a href="./planos.html">Planos</a></li>
+        <li><a href="./planos.html">Teste gratuito</a></li>
+      </ul>
+
+      <ul class="ul-footer">
+        <h3>CONTATO</h3>
+        <li><a href="./sobre.html">Formulário</a></li>
+        <li><a href="./sobre.html">Localização</a></li>
+      </ul>
+        
+      </div>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
